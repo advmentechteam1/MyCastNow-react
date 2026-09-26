@@ -25,7 +25,7 @@ export default function Casting({ go }) {
   });
 
   return (
-    <div className="w-full px-[10%] py-12 sm:py-16">
+    <div className="w-full px-[5%] py-12 sm:py-16">
       {/* Header */}
       <div>
         <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">

@@ -17,7 +17,7 @@ export default function FAQ({ go }) {
   });
 
   return (
-    <div className="w-full px-[10%] py-12 sm:py-16">
+    <div className="w-full px-[5%] py-12 sm:py-16">
       <div className="text-center max-w-xl mx-auto">
         <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
           HELP CENTER & FAQ

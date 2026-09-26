@@ -277,7 +277,7 @@ export default function Discover({ addToCart, cart = [] }) {
       </div>
 
       {/* ── Filter & Sort Section ── */}
-      <div className="w-full px-[10%] py-6">
+      <div className="w-full px-[5%] py-6">
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5">
           {/* Filter Row */}
           <div className="flex items-center justify-between flex-wrap gap-2 mb-3">

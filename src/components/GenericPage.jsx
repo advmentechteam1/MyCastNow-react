@@ -56,7 +56,7 @@ export default function GenericPage({ page }) {
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full opacity-[0.1] blur-2xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #60a5fa, transparent)' }} />
 
-        <div className="relative w-full px-[10%] py-14 sm:py-20 text-white">
+        <div className="relative w-full px-[5%] py-14 sm:py-20 text-white">
           <div className="max-w-3xl">
             {/* Tag badge */}
             <span
@@ -104,7 +104,7 @@ export default function GenericPage({ page }) {
       </div>
 
       {/* ── Content ── */}
-      <div className="w-full px-[10%] py-12 sm:py-16">
+      <div className="w-full px-[5%] py-12 sm:py-16">
 
         {/* Journey / single-section page */}
         {isJourneyPage && (() => {
