@@ -83,7 +83,7 @@ export default function Home({ go, addToCart, cart = [] }) {
     <div className="space-y-12 sm:space-y-16">
       {/* Hero Section */}
       <section ref={heroRef} className="relative overflow-hidden border-b bg-gradient-to-b from-white via-slate-50/40 to-slate-100/50" style={{ borderColor: 'var(--border)' }}>
-        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-18 md:pb-24">
+        <div className="relative w-full px-[5%] sm:px-[8%] lg:px-[10%] pt-10 pb-16 md:pt-16 md:pb-22">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Left Content (7 Cols) */}
@@ -170,7 +170,7 @@ export default function Home({ go, addToCart, cart = [] }) {
             </div>
 
             {/* Right Video Showcase (5 Cols) */}
-            <div className="reveal lg:col-span-5 flex justify-center mt-6 lg:mt-0">
+            <div className="reveal lg:col-span-5 flex justify-center lg:justify-end mt-6 lg:mt-0">
               <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-950 group">
                 <video
                   src="/download.mp4"
@@ -215,7 +215,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </section>
 
       {/* Stats Counter Banner */}
-      <section className="max-w-6xl mx-auto px-6">
+      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 sm:p-8 card bg-white shadow-lg border-slate-200/80">
           {STATS.map((s, i) => (
             <div key={i} className="text-center sm:text-left px-2">
@@ -231,7 +231,7 @@ export default function Home({ go, addToCart, cart = [] }) {
 
       {/* Trusted Studios / Brands Banner */}
       <section className="relative overflow-hidden py-10 my-4 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-y border-slate-200/70">
-        <div className="max-w-6xl mx-auto px-6 mb-6 text-center">
+        <div className="w-full px-[5%] sm:px-[8%] lg:px-[10%] mb-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-bold tracking-widest text-slate-600 uppercase mb-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>VERIFIED CASTING PARTNERS</span>
@@ -289,7 +289,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </section>
 
       {/* Featured Creators Section */}
-      <section className="max-w-6xl mx-auto px-6 py-10 sm:py-14 relative">
+      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%] py-10 sm:py-14 relative">
         {/* Header without top buttons */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
@@ -672,7 +672,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </Section>
 
       {/* Trust & Safety Guarantees */}
-      <section className="max-w-6xl mx-auto px-6">
+      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%]">
         <div
           className="p-8 sm:p-12 rounded-3xl shadow-2xl"
           style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #3b0764 100%)', border: '1px solid rgba(255,255,255,0.08)' }}
@@ -710,7 +710,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </section>
 
       {/* Bottom CTA */}
-      <section className="max-w-4xl mx-auto px-6 py-12 text-center">
+      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%] py-12 text-center">
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
           Ready to step into the spotlight?
         </h2>

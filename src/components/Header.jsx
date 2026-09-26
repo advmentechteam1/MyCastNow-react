@@ -41,7 +41,7 @@ export default function Header({ page, go, cart = [], onOpenCart, user, onLogout
       className="sticky top-0 z-40 backdrop-blur-md border-b bg-white/90"
       style={{ borderColor: 'var(--border)' }}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-3">
+      <div className="w-full px-[5%] sm:px-[8%] lg:px-[10%] h-16 flex items-center justify-between gap-4">
         {/* Logo */}
         <button
           onClick={() => go('home')}

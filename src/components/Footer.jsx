@@ -3,7 +3,7 @@ import { NAV } from '../data/content.js';
 export default function Footer({ go }) {
   return (
     <footer className="border-t mt-10" style={{ borderColor: 'var(--border)' }}>
-      <div className="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-3 gap-6 text-sm text-muted">
+      <div className="w-full px-[5%] sm:px-[8%] lg:px-[10%] py-10 grid sm:grid-cols-3 gap-6 text-sm text-muted">
         <div>
           <p className="font-display font-extrabold text-lg text-[var(--text)] mb-2">
             MyCast<span className="grad-text">Now</span>
