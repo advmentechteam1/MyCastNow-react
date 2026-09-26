@@ -6,7 +6,7 @@ export default function Pricing({ go }) {
   const [selectedPlan, setSelectedPlan] = useState(null);
 
   return (
-    <div className="w-full px-[5%] sm:px-[8%] lg:px-[10%] py-12 sm:py-16">
+    <div className="w-full px-[10%] py-12 sm:py-16">
       {/* Title */}
       <div className="text-center max-w-2xl mx-auto">
         <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">

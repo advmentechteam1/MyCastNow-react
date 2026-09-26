@@ -8,6 +8,7 @@ import CompareCreatorsModal from '../components/CompareCreatorsModal.jsx';
 
 export default function Home({ go, addToCart, cart = [] }) {
   const heroRef = useRef(null);
+  const videoRef = useRef(null);
   const talentSliderRef = useRef(null);
   const [selectedTalent, setSelectedTalent] = useState(null);
   const [selectedCasting, setSelectedCasting] = useState(null);
@@ -16,6 +17,20 @@ export default function Home({ go, addToCart, cart = [] }) {
   const [journeyTab, setJourneyTab] = useState('creator');
   const [compareList, setCompareList] = useState([]);
   const [showCompareModal, setShowCompareModal] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleAudio = (e) => {
+    if (e) e.stopPropagation();
+    if (videoRef.current) {
+      const nextMuted = !videoRef.current.muted;
+      videoRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
+      if (!nextMuted) {
+        videoRef.current.volume = 1;
+        videoRef.current.play().catch(() => {});
+      }
+    }
+  };
 
   const toggleCompareTalent = (talent) => {
     setCompareList((prev) => {
@@ -83,7 +98,7 @@ export default function Home({ go, addToCart, cart = [] }) {
     <div className="space-y-12 sm:space-y-16">
       {/* Hero Section */}
       <section ref={heroRef} className="relative overflow-hidden border-b bg-gradient-to-b from-white via-slate-50/40 to-slate-100/50" style={{ borderColor: 'var(--border)' }}>
-        <div className="relative w-full px-[5%] sm:px-[8%] lg:px-[10%] pt-10 pb-16 md:pt-16 md:pb-22">
+        <div className="relative w-full px-[10%] pt-10 pb-16 md:pt-16 md:pb-22">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Left Content (7 Cols) */}
@@ -173,13 +188,17 @@ export default function Home({ go, addToCart, cart = [] }) {
             <div className="reveal lg:col-span-5 flex justify-center lg:justify-end mt-6 lg:mt-0">
               <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-950 group">
                 <video
-                  src="/download.mp4"
+                  ref={videoRef}
+                  src="/My%20cast%20now%20video%20.mp4"
                   autoPlay
                   loop
-                  muted
+                  muted={isMuted}
                   playsInline
-                  className="w-full aspect-[4/5] object-cover object-center"
-                />
+                  onClick={toggleAudio}
+                  className="w-full aspect-[4/5] object-cover object-center cursor-pointer"
+                >
+                  <source src="/My cast now video .mp4" type="video/mp4" />
+                </video>
 
                 {/* Video Overlay Badges */}
                 <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-xs font-semibold border border-white/10 shadow-lg">
@@ -190,6 +209,26 @@ export default function Home({ go, addToCart, cart = [] }) {
                 <div className="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md text-slate-900 text-[11px] font-bold shadow-md">
                   4K Ultra HD
                 </div>
+
+                {/* Sound On / Off Toggle Button */}
+                <button
+                  type="button"
+                  onClick={toggleAudio}
+                  aria-label={isMuted ? "Turn sound on" : "Turn sound off"}
+                  className="absolute top-14 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/85 hover:bg-purple-900/90 text-white backdrop-blur-md border border-white/20 shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer text-xs font-bold"
+                >
+                  {isMuted ? (
+                    <>
+                      <span className="text-sm">🔇</span>
+                      <span>Sound Off</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-sm animate-pulse text-emerald-400">🔊</span>
+                      <span className="text-emerald-300">Sound On</span>
+                    </>
+                  )}
+                </button>
 
                 {/* Bottom Glassmorphic Overlay Bar */}
                 <div className="absolute bottom-4 left-4 right-4 z-10 p-3.5 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-xl">
@@ -215,7 +254,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </section>
 
       {/* Stats Counter Banner */}
-      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%]">
+      <section className="w-full px-[10%]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 sm:p-8 card bg-white shadow-lg border-slate-200/80">
           {STATS.map((s, i) => (
             <div key={i} className="text-center sm:text-left px-2">
@@ -231,7 +270,7 @@ export default function Home({ go, addToCart, cart = [] }) {
 
       {/* Trusted Studios / Brands Banner */}
       <section className="relative overflow-hidden py-10 my-4 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-y border-slate-200/70">
-        <div className="w-full px-[5%] sm:px-[8%] lg:px-[10%] mb-6 text-center">
+        <div className="w-full px-[10%] mb-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-bold tracking-widest text-slate-600 uppercase mb-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>VERIFIED CASTING PARTNERS</span>
@@ -289,7 +328,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </section>
 
       {/* Featured Creators Section */}
-      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%] py-10 sm:py-14 relative">
+      <section className="w-full px-[10%] py-10 sm:py-14 relative">
         {/* Header without top buttons */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
@@ -316,34 +355,8 @@ export default function Home({ go, addToCart, cart = [] }) {
           )}
         </div>
 
-        {/* Carousel Slider with Floating Left & Right Arrow Buttons */}
-        <div className="relative group/slider">
-          {/* Floating Left Navigation Arrow Button */}
-          <button
-            type="button"
-            onClick={() => scrollTalent('left')}
-            aria-label="Previous creators"
-            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 hover:text-purple-700 hover:border-purple-300 hover:bg-white shadow-xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none cursor-pointer"
-          >
-            <span className="text-2xl font-bold leading-none select-none">‹</span>
-          </button>
-
-          {/* Floating Right Navigation Arrow Button */}
-          <button
-            type="button"
-            onClick={() => scrollTalent('right')}
-            aria-label="Next creators"
-            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 hover:text-purple-700 hover:border-purple-300 hover:bg-white shadow-xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none cursor-pointer"
-          >
-            <span className="text-2xl font-bold leading-none select-none">›</span>
-          </button>
-
-          {/* Slider Cards Container */}
-          <div
-            ref={talentSliderRef}
-            className="flex gap-4 sm:gap-5 overflow-x-auto scroll-smooth py-3 px-1 no-scrollbar"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+        {/* Creative Artists Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
             {TALENTS.map((t) => {
               const inCart = cart.some((c) => (c.id || c.name) === (t.id || t.name));
               const isComparing = compareList.some((c) => (c.id || c.name) === (t.id || t.name));
@@ -352,7 +365,7 @@ export default function Home({ go, addToCart, cart = [] }) {
                 <div
                   key={t.id || t.name}
                   onClick={() => setSelectedTalent(t)}
-                  className={`w-60 sm:w-64 shrink-0 card p-3 relative group cursor-pointer hover:shadow-xl hover:-translate-y-2 hover:border-purple-300 transition-all duration-300 bg-white rounded-2xl flex flex-col justify-between ${
+                  className={`w-full card p-3.5 relative group cursor-pointer hover:shadow-xl hover:-translate-y-2 hover:border-purple-300 transition-all duration-300 bg-white rounded-2xl flex flex-col justify-between ${
                     isComparing
                       ? 'border-2 border-purple-600 ring-4 ring-purple-100 bg-purple-50/20'
                       : 'border border-slate-200/90'
@@ -465,7 +478,6 @@ export default function Home({ go, addToCart, cart = [] }) {
                 </div>
               );
             })}
-          </div>
         </div>
 
         {/* View All CTA */}
@@ -672,7 +684,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </Section>
 
       {/* Trust & Safety Guarantees */}
-      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%]">
+      <section className="w-full px-[10%]">
         <div
           className="p-8 sm:p-12 rounded-3xl shadow-2xl"
           style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #3b0764 100%)', border: '1px solid rgba(255,255,255,0.08)' }}
@@ -710,7 +722,7 @@ export default function Home({ go, addToCart, cart = [] }) {
       </section>
 
       {/* Bottom CTA */}
-      <section className="w-full px-[5%] sm:px-[8%] lg:px-[10%] py-12 text-center">
+      <section className="w-full px-[10%] py-12 text-center">
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
           Ready to step into the spotlight?
         </h2>
